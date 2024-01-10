@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "person.h"
 #include "librarian.h"
 #include "member.h"
@@ -9,24 +11,40 @@
 // #include <ctime>
 // Add the tester librarian details
 Librarian lib0(0000, "root", "library system", "root@hotmail.com", 00000);
-bool librarianCheck(){
-    int librarianIDCheck;
-    std::string librarianNameCheck;
-    std::cout << "Enter the tester librarian ID number in numeric values: ";
-    std::cin >> librarianIDCheck;
-    if (librarianIDCheck == lib0.getStaffID()){
-        std::cout << "Enter the librarian name: ";
-        std::cin >> librarianNameCheck;
-        if (librarianNameCheck == lib0.getName()){
-            std::cout << "\nWelcome " << lib0.getName() << ".\n";
-            return true;
-        } else{
-            std::cout << "This name doesn't match with the tester ID number given.\n";
-            return false;
+void addLibrary(){
+    // Check if the file name exist, if not, shut the program
+    std::string filename = "";
+    std::cout << "Enter ONLY the .csv file name with the books stored (e.g. 'filename').\n";
+    std::cin >> filename;
+    std::ifstream csvFile(filename+".csv");
+    if(csvFile.is_open()){
+        std::string line;
+        int csvLineCount = 0; 
+        std::string bookID;
+        std::string bookName;
+        std::string pageCount;
+        std::string authorFirstName;
+        std::string authorLastName;
+        std::string bookType;
+        std::getline(csvFile, line);
+        // Once file is open, loop through each line and create a Book object
+        while (std::getline(csvFile, line)){
+            std::stringstream inputString(line);
+            getline(inputString, bookID, ',');
+            getline(inputString, bookName, ',');
+            getline(inputString, pageCount, ',');
+            getline(inputString, authorFirstName, ',');
+            getline(inputString, authorLastName, ',');
+            getline(inputString, bookType, ' ');
+            std::cout << stoi(bookID) << " - " << bookName << " - " << authorFirstName << " - " << authorLastName << "\n";
+            Book book(stoi(bookID), bookName, authorFirstName, authorLastName);
+            csvLineCount++;  
         }
+        std::cout << "All books added";
+        csvFile.close();
     } else{
-        std::cout << "This librarian doesn't exist or your input is not a numeric value.\n";
-        return false;
+        std::cout << "Failed to open the file, might not exist.\nPlease check your folders and start again.\n";
+        exit(0);
     }
 }
 void options(){
@@ -40,7 +58,7 @@ void options(){
         std::cin >> enterChoice;
         }
         if (enterChoice == '1'){
-            // addNewMember();
+            // lib0.addNewMember();
         } else if (enterChoice == '2'){
 
         } else if (enterChoice == '3'){
@@ -53,20 +71,45 @@ void options(){
             exit(0);
         }
 }
-void systemFunctionality(){
-    if (librarianCheck() == true){
-        options();
-    } else{
-        std::cout << "Sorry.\n";
-        exit(0);
+void checkForTesterLibrarian(){
+    // Small input check for the tester librarian
+    std::cout << "Please enter the tester librarian details(Librarian ID = 0, Librarian name = root) to continue or 9 to exit\n";
+    std::string librarianIDCheck = "";
+    while ((librarianIDCheck != "0") || (librarianIDCheck != "9")){
+        std::cout << "Enter the tester librarian ID number in numeric values: ";
+        std::cin >> librarianIDCheck;
+        if (librarianIDCheck == "0"){
+            std::string librarianNameCheck = "";
+            while ((librarianNameCheck != "root") || (librarianNameCheck != "9")){
+                std::cout << "Enter the librarian name: ";
+                std::cin >> librarianNameCheck;
+                if(librarianNameCheck == "root"){
+                    break;
+                } else if(librarianNameCheck == "9"){
+                    exit(0);
+                } else{
+                    std::cout << "This name doesn't match with the tester ID number given.\n";
+                }
+            }
+            break;
+        } else if(librarianIDCheck == "9"){
+            exit(0);
+        } else {
+            std::cout << "This librarian doesn't exist or your input is not a numeric value.\n";
+        }
     }
 }
 int main(){
-    int counterID = 1;
-    Member m0( counterID, "lnsdlnasdl", "somewhere", "lashdna");
+    // Initialise the program 
+    std::cout << "This is a library tracking system for librarian use only.\n";
+    // Read csv file and count the amount of lines
+    addLibrary(); 
+    // Confirm is the librarian tester
+    checkForTesterLibrarian();
+    std::cout << "\nWelcome " << lib0.getName() << ".\n";
+    // Display the management options
+    options();
+    // Member m0( counterID, "lnsdlnasdl", "somewhere", "lashdna");
     // std::cout << m0.getMemberID();
-
-    std::cout << "This is a library tracking system for librarian use only.\nPlease enter the tester librarian details(Librarian ID = 0, Librarian name = root) to continue\n";
-    systemFunctionality();
     return 0;
 }
