@@ -33,24 +33,26 @@ void addLibrary(){
         std::cout << "All books added\n";
         csvFile.close();
     } else{
+        // Exit the program if the file can't be found for the user to check the folders
         std::cout << "Failed to open the file, might not exist.\nPlease check your folders and start again.\n";
         exit(0);
     }
 }
 char options(){
-        char enterChoice = '0';
-        while(!(enterChoice =='1') && !(enterChoice == '2') && !(enterChoice == '3') && !(enterChoice == '4') && !(enterChoice == '5') && !(enterChoice == '9')){ 
-        std::cout << "Press the right number to: \n'1' Add a member.\n"
-        <<"'2' Issue a book to a member.\n'3' Return a book.\n"
-        <<"'4' Display all the books borrowed by any individual member.\n"
-        <<"'5' Calculate a fine for any individual member for overdue book(s).\n"
-        <<"'9' Exit the program.\n";   
-        std::cin >> enterChoice;
-        };
-        return enterChoice;
+    // Get, input check and return the option of the option menu
+    char enterChoice = '0';
+    while(!(enterChoice =='1') && !(enterChoice == '2') && !(enterChoice == '3') && !(enterChoice == '4') && !(enterChoice == '5') && !(enterChoice == '9')){ 
+    std::cout << "Press the right number to: \n'1' Add a member.\n"
+    <<"'2' Issue a book to a member.\n'3' Return a book.\n"
+    <<"'4' Display all the books borrowed by any individual member.\n"
+    <<"'5' Calculate a fine for any individual member for overdue book(s).\n"
+    <<"'9' Exit the program.\n";   
+    std::cin >> enterChoice;
+    };
+    return enterChoice;
 }
 void checkForTesterLibrarian(){
-    // Small input check for the tester librarian
+    // Input check for the tester librarian
     std::cout << "Please enter the tester librarian details(Librarian ID = 0, Librarian name = root) to continue or 9 to exit\n";
     std::string librarianIDCheck = "";
     while ((librarianIDCheck != "0") || (librarianIDCheck != "9")){
@@ -77,6 +79,50 @@ void checkForTesterLibrarian(){
         }
     }
 }
+int getTheMemberID(){
+    // Get, input check and return the member ID
+    std::regex IDRegexCheck("^[0-9]+$");
+    std::string memberIDToCheck;
+    std::cout << "Please enter the member ID you would like to issue a book to: ";
+    std::cin >> memberIDToCheck;
+    bool x = true;
+    while (x){
+        if(std::regex_match(memberIDToCheck,IDRegexCheck)){
+            if(stoi(memberIDToCheck) < getMemberVtr().size()){
+                x = false;
+            } else{
+                std::cout << "Input is not a number or member ID doesn't exist, Enter member ID again: \n";
+                std::cin >> memberIDToCheck;
+            }
+        } else{
+            std::cout << "Input is not a number or member ID doesn't exist, Enter member ID again: \n";
+            std::cin >> memberIDToCheck;
+        }
+    }
+    return stoi(memberIDToCheck);
+}
+int getTheBookID(){
+    // Get, input check and return the book ID
+    std::regex IDRegexCheck("^[0-9]+$");
+    std::string bookIDToCheck = "";
+    std::cout << "Enter the ID of the book you are going to issue: ";
+    std::cin >> bookIDToCheck;
+    bool x = true;
+    while (x){
+        if(std::regex_match(bookIDToCheck,IDRegexCheck)){
+            if((stoi(bookIDToCheck) < getBookVtr().size())&&(stoi(bookIDToCheck) > 0)){
+                x = false;
+            } else{
+                std::cout << "Input is not a number or book ID doesn't exist, Enter book ID again: \n";
+                std::cin >> bookIDToCheck;
+            }
+        } else{
+            std::cout << "Input is not a number or book ID doesn't exist, Enter book ID again: \n";
+            std::cin >> bookIDToCheck;
+        }
+    }
+    return stoi(bookIDToCheck);
+}
 int main(){
     // Initialise the program 
     std::cout << "This is a library tracking system for librarian use only.\n";
@@ -88,46 +134,19 @@ int main(){
     // Display the management options
     char enterChoice = options();
     while (enterChoice != '9'){
-        std::regex IDRegexCheck("^[0-9]+$");
         if (enterChoice == '1'){
+            // Add a member
             lib0.addMember();
         } else if (enterChoice == '2'){
-            std::string memberIDToCheck = "";
-            std::string bookIDToCheck = "";
-            std::cout << "Please enter the member ID you would like to issue a book to: ";
-            std::cin >> memberIDToCheck;
-            bool x = true;
-            while (x){
-                if(std::regex_match(memberIDToCheck,IDRegexCheck)){
-                    if(stoi(memberIDToCheck) < getMemberVtr().size()){
-                        x = false;
-                    } else{
-                        std::cout << "Input is not a number or member ID doesn't exist, Enter member ID again: \n";
-                        std::cin >> memberIDToCheck;
-                    }
-                } else{
-                    std::cout << "Input is not a number or member ID doesn't exist, Enter member ID again: \n";
-                    std::cin >> memberIDToCheck;
-                }
-            }
-            std::cout << "Enter the ID of the book you are going to issue: ";
-            std::cin >> bookIDToCheck;
-            while (!x){
-                if(std::regex_match(bookIDToCheck,IDRegexCheck)){
-                    if((stoi(bookIDToCheck) < getBookVtr().size())&&(stoi(bookIDToCheck) > 0)){
-                        x = true;
-                    } else{
-                        std::cout << "Input is not a number or book ID doesn't exist, Enter book ID again: \n";
-                        std::cin >> bookIDToCheck;
-                    }
-                } else{
-                    std::cout << "Input is not a number or book ID doesn't exist, Enter book ID again: \n";
-                    std::cin >> bookIDToCheck;
-                }
-            }
-            lib0.issueBook(stoi(memberIDToCheck), stoi(bookIDToCheck));
+            // Get the memberID and the BookID
+            int memberID = getTheMemberID();
+            int bookID = getTheBookID();
+            // Issue the book to the member specified
+            lib0.issueBook(memberID, bookID);
         } else if (enterChoice == '3'){
-
+            // Get the memberID
+            int memberID = getTheMemberID();
+            lib0.displayBorrowedBooks(memberID);
         } else if (enterChoice == '4'){
 
         } else if (enterChoice == '5'){

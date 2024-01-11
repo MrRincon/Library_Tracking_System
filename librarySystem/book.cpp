@@ -27,7 +27,10 @@ void Book::returnBook(){
 
 }
 void Book::borrowBook(Member* borrower, time_t dueDate){
+    // Add the pointer of the borrower to the book borrower
     this->borrower = borrower;
+    // Set the due date of this book
+    setDueDate(dueDate);
     borrower->setBooksBorrowed(this);
 }
 std::vector<Book> &getBookVtr(){

@@ -42,19 +42,23 @@ void Librarian::issueBook(int memberID, int bookID){
     std::cout << "Member ID: " << (getMemberVtr()[memberID]).getMemberID() << "\n"
     << "Member name: " << (getMemberVtr()[memberID]).getName() << "\n"
     << "Book ID: " << (getBookVtr()[bookID-1]).getBookID() << "\n" 
-    << "Book Title: " << (getBookVtr()[bookID-1]).getBookName() << "\n";
-    // Set the due date
-    (getBookVtr()[bookID-1]).setDueDate(time(nullptr)+(3*24*60*60));
-    std::cout << (getBookVtr()[bookID-1]).getDueDate() << "\n";
-    std::cout << &(getMemberVtr()[memberID]);
-    (getBookVtr()[bookID-1]).borrowBook(&(getMemberVtr()[memberID]), (getBookVtr()[bookID-1]).getDueDate());
+    << "Book Title: " << (getBookVtr()[bookID-1]).getBookName() << "\n\n";
+    (getBookVtr()[bookID-1]).borrowBook(&(getMemberVtr()[memberID]), (time(nullptr)+(3*24*60*60)));
 }
 void Librarian::returnBook(int memberID, int bookID){
     // this->memberID;
     // this->bookID;
 }
 void Librarian::displayBorrowedBooks(int memberID){
-    // this->memberID;
+    if((getMemberVtr()[memberID]).getBooksBorrowed().empty()){
+        std::cout << "This member has not borrowed any books yet\n\n";
+    } else{
+        std::cout << "This member has borrowed the following books: \n";
+        for (int i = 0; i < (getMemberVtr()[memberID]).getBooksBorrowed().size(); i++){
+            std::cout << (getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookID() << " --- "
+            << (getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookName() << '\n';
+        }
+    }
 }
 void Librarian::calcFine(int memberID){
     // this->memberID;

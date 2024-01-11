@@ -8,10 +8,11 @@ Member::Member(int memberID, std::string name, std::string address, std::string 
 std::string Member::getMemberID(){
     return std::to_string(memberID);
 }
-std::vector<Book*>& Member::getBooksBorrowed(){
+std::vector<Book*> Member::getBooksBorrowed(){
     return booksLoaned;
 }
 void Member::setBooksBorrowed(Book* book){
+    // Add the book borrowed to the vector of books borrowed by this member
     booksLoaned.push_back(book);
 }
 std::vector<Member> &getMemberVtr(){
