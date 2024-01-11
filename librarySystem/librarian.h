@@ -1,6 +1,11 @@
 #include <iostream>
 #include <ctime>
+#include <vector>
+#include <string>
+// Include all the .h files in order
 #include "person.h"
+#include "member.h"
+#include "book.h"
 #ifndef _LIBRARIAN_H_
 #define _LIBRARIAN_H_
 class Librarian: public Person{

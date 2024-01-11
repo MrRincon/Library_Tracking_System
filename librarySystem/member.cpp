@@ -8,14 +8,13 @@ Member::Member(int memberID, std::string name, std::string address, std::string 
 std::string Member::getMemberID(){
     return std::to_string(memberID);
 }
-std::vector<Book*> Member::getBooksBorrowed(){
+std::vector<Book*>& Member::getBooksBorrowed(){
     return booksLoaned;
 }
 void Member::setBooksBorrowed(Book* book){
     booksLoaned.push_back(book);
-    // int valueBookID;
-    // std::cout << "Enter the book ID of the book you would like to borrow: ";
-    // std::cin >> valueBookID;
-    // valueBookID
-    
+}
+std::vector<Member> &getMemberVtr(){
+    static std::vector<Member> memberVtr;
+    return memberVtr;
 }
