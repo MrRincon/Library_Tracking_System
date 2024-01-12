@@ -1,3 +1,6 @@
+// Student ID# M00774667
+#ifndef _LIBRARIAN_H_
+#define _LIBRARIAN_H_
 #include <iostream>
 #include <ctime>
 #include <string>
@@ -5,8 +8,6 @@
 #include "person.h"
 #include "member.h"
 #include "book.h"
-#ifndef _LIBRARIAN_H_
-#define _LIBRARIAN_H_
 class Librarian: public Person{
     private:
         int staffID;

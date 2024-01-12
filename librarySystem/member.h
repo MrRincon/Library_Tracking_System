@@ -1,9 +1,10 @@
+// Student ID# M00774667
+#ifndef _MEMBER_H_
+#define _MEMBER_H_
 #include <iostream>
 #include <vector>
 // Include only the person.h file
 #include "person.h"
-#ifndef _MEMBER_H_
-#define _MEMBER_H_
 // Forward declaration to avoid compiling errors
 class Book;
 class Member: public Person{

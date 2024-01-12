@@ -1,3 +1,4 @@
+// Student ID# M00774667
 #include "person.h"
 std::string Person::getName(){
     return name;

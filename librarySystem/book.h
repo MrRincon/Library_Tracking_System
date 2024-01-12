@@ -1,11 +1,12 @@
+// Student ID# M00774667
+#ifndef _BOOK_H_
+#define _BOOK_H_
 #include <iostream>
 #include <ctime>
 #include <string>
 #include <fstream>
 // Include the member file to manage the borrowBook function without issues
 #include "member.h"
-#ifndef _BOOK_H_
-#define _BOOK_H_
 class Book{
     private:
         int bookID;

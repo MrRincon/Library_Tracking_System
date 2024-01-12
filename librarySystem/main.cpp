@@ -1,3 +1,4 @@
+// Student ID# M00774667
 #include <iostream>
 #include <sstream>
 #include "librarian.h"
@@ -34,14 +35,14 @@ void addLibrary(){
         exit(0);
     }
 }
-char options(){
+std::string options(){
     // Get, input check and return the option of the option menu
-    char enterChoice = '0';
-    while(!(enterChoice =='1') && !(enterChoice == '2') && !(enterChoice == '3') && !(enterChoice == '4') && !(enterChoice == '9')){ 
+    std::string enterChoice = "0";
+    while(!(enterChoice =="1") && !(enterChoice == "2") && !(enterChoice == "3") && !(enterChoice == "4") && !(enterChoice == "9")){ 
     std::cout << "\nPress the right number to: \n'1' Add a member.\n"
-    <<"'2' Issue a book to a member.\n'3' Return a book and calculate fine if overdue.\n"
-    <<"'4' Display all the books borrowed by any individual member.\n"
-    <<"'9' Exit the program.\n";   
+            <<"'2' Issue a book to a member.\n'3' Return a book and calculate fine if overdue.\n"
+            <<"'4' Display all the books borrowed by any individual member.\n"
+            <<"'9' Exit the program.\n";   
     std::cin >> enterChoice;
     };
     return enterChoice;
@@ -49,7 +50,7 @@ char options(){
 void checkForTesterLibrarian(){
     // Input check for the tester librarian
     std::cout << "\nPlease enter the tester librarian details\n"
-    << "(Librarian ID = 0, Librarian name = root)to continue or 9 to exit\n";
+            << "(Librarian ID = 0, Librarian name = root)to continue or 9 to exit\n";
     std::string librarianIDCheck = "";
     while ((librarianIDCheck != "0") || (librarianIDCheck != "9")){
         std::cout << "Enter the tester librarian ID number in numeric values: ";
@@ -128,23 +129,23 @@ int main(){
     checkForTesterLibrarian();
     std::cout << "\nWelcome " << lib0.getName() << ".\n";
     // Display the management options
-    char enterChoice = options();
-    while (enterChoice != '9'){
+    std::string enterChoice = options();
+    while (enterChoice != "9"){
         int memberID, bookID;
-        if (enterChoice == '1'){
+        if (enterChoice == "1"){
             // Add a member
             lib0.addMember();
-        } else if (enterChoice == '2'){
+        } else if (enterChoice == "2"){
             // Issue the book to the member specified
             memberID = getTheMemberID();
             bookID = getTheBookID();
             lib0.issueBook(memberID, bookID);
-        } else if (enterChoice == '3'){
+        } else if (enterChoice == "3"){
             // Return a book borrowed by the member and calculate the fine
             memberID = getTheMemberID();
             bookID = getTheBookID();
             lib0.returnBook(memberID, bookID);
-        } else if (enterChoice == '4'){
+        } else if (enterChoice == "4"){
             // Display all the books borrowed by the member
             memberID = getTheMemberID();
             lib0.displayBorrowedBooks(memberID);

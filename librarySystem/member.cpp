@@ -1,3 +1,4 @@
+// Student ID# M00774667
 #include "member.h"
 Member::Member(int memberID, std::string name, std::string address, std::string email){
     this->memberID = memberID;
