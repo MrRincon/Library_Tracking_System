@@ -11,7 +11,7 @@ std::string Book::getBookID(){
 }
 std::string Book::getBookName(){
     return bookName;
-}
+} 
 std::string Book::getAuthorFirstName(){
     return authorFirstName;
 }
