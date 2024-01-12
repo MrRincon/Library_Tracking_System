@@ -24,7 +24,9 @@ void Book::setDueDate(time_t dueDate){
     this->dueDate = dueDate;
 }
 void Book::returnBook(){
-
+    // Assign the borrower pointer of the book to 0 or nullptr
+        this->borrower = nullptr;
+        std::cout << "Book has returned.\n";
 }
 void Book::borrowBook(Member* borrower, time_t dueDate){
     // Add the pointer of the borrower to the book borrower

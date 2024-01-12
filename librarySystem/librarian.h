@@ -1,6 +1,5 @@
 #include <iostream>
 #include <ctime>
-#include <vector>
 #include <string>
 // Include all the .h files in order
 #include "person.h"
@@ -18,7 +17,7 @@ class Librarian: public Person{
         void issueBook(int memberID, int bookID);
         void returnBook(int memberID, int bookID);
         void displayBorrowedBooks(int memberID);
-        void calcFine(int memberID);
+        void calcFine(int memberID, int bookID);
         int getStaffID();
         void setStaffID(int staffID);
         int getSalary();

@@ -2,7 +2,6 @@
 #include <ctime>
 #include <string>
 #include <fstream>
-#include <vector>
 // Include the member file to manage the borrowBook function without issues
 #include "member.h"
 #ifndef _BOOK_H_
@@ -15,7 +14,7 @@ class Book{
         std::string authorLastName;
         std::string bookType;
         time_t dueDate;
-        class Member* borrower;
+        class Member* borrower = nullptr;
     public:
         Book(int bookID, std::string bookName, std::string authorFirstName, std::string authorLastName);
         std::string getBookID();
@@ -27,5 +26,6 @@ class Book{
         void returnBook();
         void borrowBook(Member* borrower, time_t dueDate);
 };
+// External function to store all the books
 std::vector<Book> &getBookVtr();
 #endif
