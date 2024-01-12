@@ -1,3 +1,4 @@
+// Student ID# M00774667
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "person.h"
@@ -9,18 +10,18 @@ TEST_CASE("Person functionality", "[Person]"){
     Person person;
     person.setName("M00774667");
     person.setAddress("Somewhere");
-    person.setEmail("ar1564@live.mdx.ac.uk");
+    person.setEmail("test@hotmail.com");
     REQUIRE(person.getName() == "M00774667");
     REQUIRE(person.getAddress() == "Somewhere");
-    REQUIRE(person.getEmail() == "ar1564@live.mdx.ac.uk");
+    REQUIRE(person.getEmail() == "test@hotmail.com");
 }
 // Test case for Member class.
 TEST_CASE("Member functionality", "[Member]"){
-    Member member(0, "M00774667", "Somewhere", "ar1564@live.mdx.ac.uk");
+    Member member(0, "M00774667", "Somewhere", "test@hotmail.com");
     REQUIRE(member.getMemberID() == "0");
     REQUIRE(member.getName() == "M00774667");
     REQUIRE(member.getAddress() == "Somewhere");
-    REQUIRE(member.getEmail() == "ar1564@live.mdx.ac.uk");
+    REQUIRE(member.getEmail() == "test@hotmail.com");
 }
 // Test case for Book class.
 TEST_CASE("Book functionality", "[Book]"){
