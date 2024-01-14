@@ -41,12 +41,16 @@ void Librarian::addMember(){
 }
 void Librarian::issueBook(int memberID, int bookID){
     // Display the user and the book issued
-    std::cout << "\nMember ID: " << (getMemberVtr()[memberID]).getMemberID() << "\n"
-            << "Member name: " << (getMemberVtr()[memberID]).getName() << "\n"
-            << "Book ID: " << (getBookVtr()[bookID-1]).getBookID() << "\n" 
-            << "Book Title: " << (getBookVtr()[bookID-1]).getBookName() << "\n";
-    // Adjusting the borrower in the book class
-    (getBookVtr()[bookID-1]).borrowBook(&(getMemberVtr()[memberID]), (time(nullptr)+(3*24*60*60)));
+    if ((getBookVtr()[bookID-1]).getBorrower() == 0){
+        std::cout << "\nMember ID: " << (getMemberVtr()[memberID]).getMemberID() << "\n"
+                << "Member name: " << (getMemberVtr()[memberID]).getName() << "\n"
+                << "Book ID: " << (getBookVtr()[bookID-1]).getBookID() << "\n" 
+                << "Book Title: " << (getBookVtr()[bookID-1]).getBookName() << "\n";
+        // Adjusting the borrower in the book class
+        (getBookVtr()[bookID-1]).borrowBook(&(getMemberVtr()[memberID]), (time(nullptr)+(3*24*60*60)));
+    } else{
+        std::cout << "This book can't be granted at the moment. Please wait until is available";
+    }
 }
 void Librarian::returnBook(int memberID, int bookID){
     // Check if the books borrowed by the member is empty
@@ -54,17 +58,17 @@ void Librarian::returnBook(int memberID, int bookID){
         std::cout << "The member can't return any books as he hasn't borrowed any\n";
     } else {
         bool x = true;
-        // Loop through all the pointers of books in the books borrowed vector of the member selected
+        /* Loop through all the pointers of books in the books borrowed 
+        vector of the member selected if the borrower is not equal to zero*/
         for (int i = 0; i < (getMemberVtr()[memberID]).getBooksBorrowed().size(); i++){
-            if (bookID == stoi((getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookID())){
+            if ((bookID == stoi((getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookID())) 
+                && ((getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBorrower() != 0)){
                 x = false;
-                // Reasign the book borrowed by the user pointer to 0 or nullptr
-                ((getMemberVtr()[memberID]).getBooksBorrowed()[i]) = nullptr;
                 // Calculate fine
                 calcFine(memberID, bookID);
                 // Fix the values in the book class
                 getBookVtr()[bookID-1].returnBook();
-            } 
+            }
         }
         if(x){
             std::cout << "Book hasn't been requested\n";
@@ -78,8 +82,10 @@ void Librarian::displayBorrowedBooks(int memberID){
     } else{
         std::cout << "This member has borrowed the following books: \n";
         for (int i = 0; i < (getMemberVtr()[memberID]).getBooksBorrowed().size(); i++){
-            std::cout << (getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookID() << " -- "
-                    << (getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookName() << '\n';
+            if ((getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBorrower() != 0){
+                std::cout << (getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookID() << " -- "
+                        << (getMemberVtr()[memberID]).getBooksBorrowed()[i]->getBookName() << '\n';
+            }
         }
     }
 }

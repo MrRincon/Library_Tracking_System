@@ -13,7 +13,6 @@ class Member: public Person{
         Member(int memberID, std::string name, std::string address, std::string email);
         std::string getMemberID();
         std::vector<Book*> getBooksBorrowed();
-        std::vector<Book *>& getBooksBorrowedReference();
         void setBooksBorrowed(Book* book);
 };
 // External function to store all the members;

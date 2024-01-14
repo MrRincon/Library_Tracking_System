@@ -135,19 +135,31 @@ int main(){
             // Add a member
             lib0.addMember();
         } else if (enterChoice == "2"){
-            // Issue the book to the member specified
-            memberID = getTheMemberID();
-            bookID = getTheBookID();
-            lib0.issueBook(memberID, bookID);
+            if (getMemberVtr().size() == 0){
+                std::cout << "Add a member first, There is no members registered";
+            } else{
+                // Issue the book to the member specified
+                memberID = getTheMemberID();
+                bookID = getTheBookID();
+                lib0.issueBook(memberID, bookID);
+            }
         } else if (enterChoice == "3"){
-            // Return a book borrowed by the member and calculate the fine
-            memberID = getTheMemberID();
-            bookID = getTheBookID();
-            lib0.returnBook(memberID, bookID);
+            if (getMemberVtr().size() == 0){
+                std::cout << "Add a member first, There is no members registered";
+            } else{
+                // Return a book borrowed by the member and calculate the fine
+                memberID = getTheMemberID();
+                bookID = getTheBookID();
+                lib0.returnBook(memberID, bookID);
+            }
         } else if (enterChoice == "4"){
-            // Display all the books borrowed by the member
-            memberID = getTheMemberID();
-            lib0.displayBorrowedBooks(memberID);
+            if (getMemberVtr().size() == 0){
+                std::cout << "Add a member first, There is no members registered";
+            } else{
+                // Display all the books borrowed by the member
+                memberID = getTheMemberID();
+                lib0.displayBorrowedBooks(memberID);
+            }
         }
         enterChoice = options();
     }

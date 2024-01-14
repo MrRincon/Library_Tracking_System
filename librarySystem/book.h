@@ -3,7 +3,6 @@
 #define _BOOK_H_
 #include "member.h"
 #include <ctime>
-#include <string>
 #include <fstream>
 class Book{
     private:
@@ -24,6 +23,8 @@ class Book{
         void setDueDate(time_t dueDate);
         void returnBook();
         void borrowBook(Member* borrower, time_t dueDate);
+        // Extra operation to check the borrower
+        Member* getBorrower();
 };
 // External function to store all the books
 std::vector<Book> &getBookVtr();

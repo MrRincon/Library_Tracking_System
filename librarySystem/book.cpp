@@ -18,6 +18,9 @@ std::string Book::getAuthorFirstName(){
 std::string Book::getAuthorLastName(){
     return authorLastName;
 }
+Member* Book::getBorrower(){
+    return borrower;
+}
 time_t Book::getDueDate(){
     return dueDate;
 }
@@ -26,8 +29,7 @@ void Book::setDueDate(time_t dueDate){
 }
 void Book::returnBook(){
     // Assign the borrower pointer of the book to 0 or nullptr
-        this->borrower = nullptr;
-        std::cout << "Book has returned.\n";
+    borrower = nullptr;
 }
 void Book::borrowBook(Member* borrower, time_t dueDate){
     // Add the pointer of the borrower to the book borrower
