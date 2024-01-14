@@ -22,11 +22,20 @@ void Librarian::setSalary(int salary){
 void Librarian::addMember(){
     int memberID = getMemberVtr().size();
     std::string name, address, email;
+    std::regex nameRegexCheck("[a-zA-Z -]+");
+    std::regex addressRegexCheck("[a-zA-Z0-9 -]+");
     std::regex emailRegexCheck("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
     std::cout << "Enter the name of the new member ID: ";
     std::cin >> name;
+    while(!std::regex_match(name, nameRegexCheck)){
+        std::cout << "Invalid name. Try again:  ";
+        std::cin >> name;
+    }
     std::cout << "Enter the member's address: ";
     std::cin >> address;
+    while(!std::regex_match(address, addressRegexCheck)){
+        std::cout << "Invalid address. Try again:  ";
+    }
     std::cout << "Enter the member's email address: ";
     std::cin >> email;
     // Regex check for email address
