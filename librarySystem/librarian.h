@@ -1,4 +1,9 @@
-// Student ID# M00774667
+/*
+librarian.h
+author: M00774667
+Created: 25/12/2023
+Updated: 14/1/2024
+*/
 #ifndef _LIBRARIAN_H_
 #define _LIBRARIAN_H_
 #include "book.h"

@@ -1,4 +1,9 @@
-// Student ID# M00774667
+/*
+person.cpp
+author: M00774667
+Created: 26/12/2023
+Updated: 30/12/2023
+*/
 #include "person.h"
 std::string Person::getName(){
     return name;

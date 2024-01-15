@@ -1,4 +1,9 @@
-// Student ID# M00774667
+/*
+book.h
+author: M00774667
+Created: 26/12/2023
+Updated: 14/1/2024
+*/
 #ifndef _BOOK_H_
 #define _BOOK_H_
 #include "member.h"

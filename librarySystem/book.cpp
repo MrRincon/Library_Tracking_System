@@ -1,4 +1,9 @@
-// Student ID# M00774667
+/*
+book.cpp
+author: M00774667
+Created: 27/12/2023
+Updated: 14/1/2024
+*/
 #include "book.h"
 Book::Book(int bookID, std::string bookName, std::string authorFirstName, std::string authorLastName){
     this->bookID = bookID;

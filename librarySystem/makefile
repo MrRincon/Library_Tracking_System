@@ -1,3 +1,7 @@
+# makefile
+# Author: M00774667
+# Created: 28/12/2023
+# Updated: 12/1/2024
 CXX = g++
 CXXFLAGS = -g 
 all: libraryMain Catch2test

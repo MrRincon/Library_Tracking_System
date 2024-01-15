@@ -1,4 +1,9 @@
-// Student ID# M00774667
+/*
+librarian.cpp
+author: M00774667
+Created: 26/12/2023
+Updated: 14/1/2024
+*/
 #include "librarian.h"
 Librarian::Librarian(int staffID, std::string name, std::string address, std::string email, int salary){
     this->staffID = staffID;

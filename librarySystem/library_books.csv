@@ -1,9 +1,9 @@
 Book ID,Book Name,Page Count,Author First Name,Author Last Name,Book Type
 1,A Daughter of the Snows,199,Jack,London,Guide
-2,"The Near East: 10000 Years of History",298,Isaac,Asimov,Journals
+2,"The Near East: 10,000 Years of History",298,Isaac,Asimov,Journals
 3,The Cocoon: A Rest-Cure Comedy,90,Ruth,Stuart,Diaries
 4,The Freakshow Murders,321,Frederic,Brown,Drama
-5,"Pharaohs Fellahs and Explorers",367,Amelia B.,Edwards,Guide
+5,"Pharaohs, Fellahs and Explorers",367,Amelia B.,Edwards,Guide
 6,Hard Times,293,Charles,Dickens,Science fiction
 7,A Modern Instance,222,William Dean,Howells,Diaries
 8,The Real Mother Goose,88,Mother,Goose,Science fiction
@@ -48,7 +48,7 @@ Book ID,Book Name,Page Count,Author First Name,Author Last Name,Book Type
 47,A Tale of Two Cities,331,Charles,Dickens,Journals
 48,Dombey and Son,344,Charles,Dickens,Biographies
 49,Famous Women,273,Givoanni,Boccaccio,Science fiction
-50,"Rejection The Ruling Spirit",358,Ellis,Butler,Satire
+50,"Rejection, The Ruling Spirit",358,Ellis,Butler,Satire
 51,Little Dorrit,314,Charles,Dickens,Journals
 52,The Four-Fifteen Express,201,Amelia B.,Edwards,Satire
 53,Fairy Prince and Other Stories,306,Eleanor Hallowell,Abbott,Fantasy
@@ -111,7 +111,7 @@ Book ID,Book Name,Page Count,Author First Name,Author Last Name,Book Type
 110,Manhattan Transfer,124,John,DosPassos,Drama
 111,Fasti,325,Publius,Ovid,Horror
 112,Hearts of Three,272,Jack,London,Satire
-113,"Speak Memory",154,Vladimir,Nabokov,Fantasy
+113,"Speak, Memory",154,Vladimir,Nabokov,Fantasy
 114,Kidnapped,334,Robert Louis,Stevenson,Drama
 115,The Brothers Karamazov,161,Fyodor,Dostoevsky,Mystery
 116,Envelope Poems,342,Emily,Dickinson,Fantasy
@@ -132,7 +132,7 @@ Book ID,Book Name,Page Count,Author First Name,Author Last Name,Book Type
 131,The Concise Pepys,303,Samuel,Pepys,Journals
 132,Tales From Shakespeare,121,Albert,Blaisdell,Diaries
 133,Molly Make-Believe,286,Eleanor Hallowell,Abbott,Diaries
-134,"Peace on Earth Good Will to Dogs",321,Eleanor Hallowell,Abbott,Guide
+134,"Peace on Earth, Good Will to Dogs",321,Eleanor Hallowell,Abbott,Guide
 135,Miss Darkness,360,Frederic,Brown,Health
 136,Poor Folk,202,Fyodor,Dostoevsky,Horror
 137,Their Wedding Journey,132,William Dean,Howells,Art
@@ -163,7 +163,7 @@ Book ID,Book Name,Page Count,Author First Name,Author Last Name,Book Type
 162,Famous Ghost Stories,152,Amelia B.,Edwards,Drama
 163,Book Of Indian Braves,117,Kate Dickinson,Sweetser,Health
 164,Binodini,306,Rabindranath,Tagore,Health
-165,"Holly And Pizen And Other Stories",220,Ruth,Stuart,Science
+165,"Holly And Pizen, And Other Stories",220,Ruth,Stuart,Science
 166,Lolita,153,Vladimir,Nabokov,Satire
 167,The Best Short Stories,115,Fyodor,Dostoevsky,Satire
 168,Cimarron,101,Edna,Ferber,Science

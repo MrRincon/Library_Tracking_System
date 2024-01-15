@@ -1,4 +1,9 @@
-// Student ID# M00774667
+/*
+member.cpp
+author: M00774667
+Created: 26/12/2023
+Updated: 14/1/2024
+*/
 #include "member.h"
 Member::Member(int memberID, std::string name, std::string address, std::string email){
     this->memberID = memberID;

@@ -1,4 +1,9 @@
-// Student ID# M00774667
+/*
+person.h
+author: M00774667
+Created: 26/12/2023
+Updated: 30/12/2023
+*/
 #ifndef _PERSON_H_
 #define _PERSON_H_
 #include <iostream>
