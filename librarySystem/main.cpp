@@ -14,11 +14,21 @@ void addLibrary(){
     std::cout << "Enter ONLY the .csv file name with the books stored (DON'T ADD '.csv')(e.g. 'filename').\n";
     std::cin >> filename;
     std::ifstream csvFile(filename+".csv");
+    std::regex quotes(R"("+[a-zA-Z0-9, ]+")");
+    std::string editedPhrase;
+    std::smatch matches;
     if(csvFile.is_open()){
         std::string bookID, bookName, pageCount, authorFirstName, authorLastName, bookType, line;
         std::getline(csvFile, line);
         // Once file is open, loop through each line and create a Book object
         while (std::getline(csvFile, line)){
+            std::regex_search(line, matches, quotes);
+            if(matches.size() > 0){
+                for(std::string word : matches){
+                    editedPhrase = std::regex_replace(word, std::regex(","), "");
+                    line = std::regex_replace(line, std::regex(word), editedPhrase);
+                }
+            }
             std::stringstream inputString(line);
             getline(inputString, bookID, ',');
             getline(inputString, bookName, ',');
