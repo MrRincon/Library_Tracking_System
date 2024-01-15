@@ -14,7 +14,7 @@ void addLibrary(){
     std::cout << "Enter ONLY the .csv file name with the books stored (DON'T ADD '.csv')(e.g. 'filename').\n";
     std::cin >> filename;
     std::ifstream csvFile(filename+".csv");
-    std::regex quotes(R"("+[a-zA-Z0-9, ]+")");
+    std::regex quotes(R"("+[a-zA-Z0-9:, ]+")");
     std::string editedPhrase;
     std::smatch matches;
     if(csvFile.is_open()){
