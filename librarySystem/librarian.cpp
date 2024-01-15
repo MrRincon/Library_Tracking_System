@@ -40,6 +40,7 @@ void Librarian::addMember(){
     std::cin >> address;
     while(!std::regex_match(address, addressRegexCheck)){
         std::cout << "Invalid address. Try again:  ";
+        std::cin >> address;
     }
     std::cout << "Enter the member's email address: ";
     std::cin >> email;
